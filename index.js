@@ -39,6 +39,16 @@ for (let i = 0; i < 100; ++i) balls.push(new Ball());
 function animate() {
   view.clearRect(0, 0, canvas.width, canvas.height);
   for (const b of balls) b.draw();
+
+  for (let i = 0; i < balls.length - 1; ++i) {
+    for (let j = i + 1; j < balls.length; ++j) {
+      view.beginPath();
+      view.moveTo(balls[i].x, balls[i].y);
+      view.lineTo(balls[j].x, balls[j].y);
+      view.stroke();
+    }
+  }
+
   requestAnimationFrame(animate);
 }
 
